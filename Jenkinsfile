@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = 'dharani/spring-boot-url-shortener'
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+        APP_PORT = '8081'
     }
 
     stages {
@@ -31,21 +32,16 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh """
-                        echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-                        docker push ${IMAGE_NAME}
-                    """
-                }
-            }
-        }
-
         stage('Deploy with Docker Compose') {
             steps {
                 sh 'docker-compose down || true'
                 sh 'docker-compose up -d'
+            }
+        }
+
+        stage('Check App URL') {
+            steps {
+                echo "🌐 Your app should be available at: http://localhost:${APP_PORT}/"
             }
         }
     }
