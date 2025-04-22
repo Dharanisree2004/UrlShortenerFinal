@@ -15,19 +15,19 @@ pipeline {
 
         stage('Build Project') {
             steps {
-                sh './mvnw clean package -DskipTests'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Run Unit Tests') {
             steps {
-                sh './mvnw test'
+                sh 'mvn test'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh './mvnw spring-boot:build-image -DdockerImageName=${IMAGE_NAME}'
+                sh 'mvn spring-boot:build-image -DdockerImageName=${IMAGE_NAME}'
             }
         }
 
@@ -52,10 +52,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Build and Deployment successful!'
+            echo '✅ CI/CD pipeline completed successfully.'
         }
         failure {
-            echo '❌ Something went wrong. Check the logs!'
+            echo '❌ Pipeline failed. Please check the logs.'
         }
     }
 }
