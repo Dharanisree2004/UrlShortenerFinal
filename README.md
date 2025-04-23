@@ -1,6 +1,6 @@
 # Spring Boot URL Shortener
 
-Shortener is a service that shortens a long URL into a short URL which is easier to share.
+URL Shortener is a service that shortens a long URL into a short URL which is easier to share.
 
 ## Prerequisites
 * Java 21
