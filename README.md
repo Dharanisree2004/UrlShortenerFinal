@@ -13,7 +13,7 @@ URL Shortener is a service that shortens a long URL into a short URL which is ea
 * PostgreSQL
 * FlywayDb Migrations
 * Thymeleaf
-
+*Bootstrap  css
 ```shell
 # To build Docker image with default name sivaprasadreddy/spring-boot-url-shortener
 $  ./mvnw spring-boot:build-image
