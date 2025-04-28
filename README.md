@@ -1,7 +1,3 @@
-Here’s your updated **README.md** using only `mvn` (not `./mvnw`) — exactly matching your Jenkins pipeline steps:
-
----
-
 # Spring Boot URL Shortener
 
 **URL Shortener** is a service that shortens long URLs into short URLs, making them easier to share and manage.
